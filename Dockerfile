@@ -60,8 +60,8 @@ RUN set -ex \
 RUN set -ex;\
     :;\
     git clone --branch $BV_TURN --depth 1 https://github.com/coturn/coturn.git /turnbuild ;\
-    cd /turnbuild\
-    GIT_TURN=$(git ls-remote https://github.com/coturn/coturn.git $BV_TURN | cut -f 1)\
+    cd /turnbuild;\
+    GIT_TURN=$(git ls-remote https://github.com/coturn/coturn.git $BV_TURN | cut -f 1);\
     ./configure;make;make install;\
     echo "coturn: $BV_TURN ($GIT_TURN)" >> /coturn.version;\
     cd /;\
@@ -83,7 +83,7 @@ RUN set -ex;\
         linux-headers-amd64 \
         make \
         python-dev \
-        zlib1g-dev \
+        zlib1g-dev;\
     :;\
     apt-get remove -y coturn;\
     apt-get autoremove -y ;\
