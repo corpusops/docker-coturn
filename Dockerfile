@@ -56,15 +56,7 @@ RUN set -ex \
         python-virtualenv \
         sqlite \
         zlib1g \
-        zlib1g-dev;\
-    :;\
-    pip install --upgrade pip;\
-    pip install --upgrade python-ldap;\
-    pip install --upgrade pyopenssl;\
-    pip install --upgrade enum34;\
-    pip install --upgrade ipaddress;\
-    pip install --upgrade lxml;\
-    pip install --upgrade supervisor
+        zlib1g-dev
 RUN set -ex;\
     :;\
     git clone --branch $BV_TURN --depth 1 https://github.com/coturn/coturn.git /turnbuild ;\
