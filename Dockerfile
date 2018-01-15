@@ -58,7 +58,7 @@ RUN set -ex \
         zlib1g \
         zlib1g-dev;\
     :;\
-    pip install --upgrade supervisor;\
+    pip install --upgrade supervisor;
 RUN set -ex;\
     :;\
     git clone --branch $BV_TURN --depth 1 https://github.com/coturn/coturn.git /turnbuild ;\
