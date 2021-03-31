@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 OPTION="${1}"
+export SUPERVISORD_CONFIGS=${SUPERVISORD_CONFIGS:-cron coturn rsyslog}
 generate_turn_key() {
     local turnkey="${1}"
     local filepath="${2}"
@@ -29,7 +30,7 @@ case $OPTION in
         useradd -r -d /data -M -u $MATRIX_UID -g matrix matrix
         chown -R $MATRIX_UID:$MATRIX_GID /data
         chmod a+rwx /run
-        exec supervisord -c /supervisord.conf
+        exec supervisord.sh
         ;;
 
     "stop")

@@ -1,6 +1,6 @@
-FROM debian:jessie
+FROM corpusops/debian-bare:buster
 # Git branch to build from
-ARG BV_TURN=master
+ARG BV_TURN=4.5.1.3
 # use --build-arg REBUILD=$(date) to invalidate the cache and upgrade all
 # packages
 ARG REBUILD=0
@@ -28,12 +28,12 @@ RUN set -ex \
         file \
         gcc \
         git \
-        libevent-2.0-5 \
-        libevent-pthreads-2.0-5 \
-        libevent-extra-2.0-5 \
-        libevent-pthreads-2.0-5 \
-        libevent-core-2.0-5 \
-        libevent-openssl-2.0-5 \
+        libevent-2.1.6 \
+        libevent-pthreads-2.1.6 \
+        libevent-extra-2.1.6 \
+        libevent-pthreads-2.1.6 \
+        libevent-core-2.1.6 \
+        libevent-openssl-2.1.6 \
         libevent-dev \
         libffi-dev \
         libffi6 \
@@ -45,7 +45,7 @@ RUN set -ex \
         libsasl2-dev \
         libsqlite3-dev \
         libssl-dev \
-        libssl1.0.0 \
+        libssl1.1 \
         libtool \
         libxml2 \
         libxml2-dev \
@@ -100,8 +100,7 @@ RUN set -ex;\
 COPY adds/start.sh /start.sh
 
 # add supervisor configs
-COPY adds/supervisord-turnserver.conf /conf/
-COPY adds/supervisord.conf /
+COPY adds/coturn.conf /etc/supervisor.d/
 
 # startup configuration
 ENTRYPOINT ["/start.sh"]
